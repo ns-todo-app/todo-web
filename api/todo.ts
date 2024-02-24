@@ -1,4 +1,5 @@
 import { useContext } from '@nuxtjs/composition-api'
+import { Todo } from '~/types/todo'
 
 interface TodoResponse {
   id: string
@@ -10,7 +11,7 @@ export const useTodoApi = () => {
   const { $axios } = useContext()
 
   const getTodos = async () => {
-    const response = await $axios.request<TodoResponse>({
+    const response = await $axios.request<Todo[]>({
       url: '/todos',
       method: 'get'
     })

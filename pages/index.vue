@@ -17,6 +17,7 @@
             </div>
 
             <b-button @click="logout" variant="danger">Logout</b-button>
+            <b-button to="/todos" variant="primary">Go to Todos</b-button>
           </b-card>
           <b-card v-else title="Login" class="my-3 rounded-shadow">
             <Login />
