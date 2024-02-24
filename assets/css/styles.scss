@@ -1,0 +1,382 @@
+$gray-100: #f7f7f7 !default;
+$gray-200: #e5e5e5 !default;
+$gray-300: #d6d6d6 !default;
+$gray-500: #bababa !default;
+$gray-600: #707070 !default;
+$gray-800: #393939 !default;
+
+$black: #000 !default;
+$white-100: #f4f4fa !default;
+
+$purple: #5f29cc !default;
+$purple-600: #6c63ff !default;
+$purple-700: #481164 !default;
+$purple-800: #311270 !default;
+
+$yellow: #ffaf12 !default;
+$yellow-800: #cbaa0d !default;
+
+$blue-800: #0a00ff !default;
+
+$red-600: #ff6c6c !default;
+
+$primary: $purple-800 !default;
+$warning: $yellow !default;
+
+$theme-colors: (
+        'gray-100': $gray-100,
+        'gray-200': $gray-200,
+        'gray-300': $gray-300,
+        'gray-500': $gray-500,
+        'gray-600': $gray-600,
+        'gray-800': $gray-800,
+        'white-100': $white-100,
+        'purple': $purple,
+        'purple-600': $purple-600,
+        'purple-800': $purple-800,
+        'yellow-800': $yellow-800,
+        'blue-800': $blue-800,
+        'red-600': $red-600,
+) !default;
+
+$font-family-sans-serif: 'Prompt', sans-serif !default;
+
+$body-bg: $gray-100 !default;
+$body-color: $black !default;
+
+$navbar-light-color: $gray-800 !default;
+$navbar-light-hover-color: $primary !default;
+$box-shadow: 0 0 5px #bbb !default;
+
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-15 {
+  padding: 15px;
+}
+
+.p-30 {
+  padding: 30px;
+}
+
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.px-25 {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.px-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.px-80 {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.py-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.py-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.py-25 {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.py-30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.pt-25 {
+  padding-top: 25px;
+}
+
+.pt-30 {
+  padding-top: 30px;
+}
+
+.pb-15 {
+  padding-bottom: 15px;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
+}
+
+.mx-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.my-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.my-30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-200 {
+  margin-top: 200px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+.-mb-px {
+  margin-bottom: -1px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.ml-15 {
+  margin-left: 15px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.text-12 {
+  font-size: 12px;
+}
+
+.text-14 {
+  font-size: 14px;
+}
+
+.text-16 {
+  font-size: 16px;
+}
+
+.text-18 {
+  font-size: 18px;
+}
+
+.text-20 {
+  font-size: 20px;
+}
+
+.text-24 {
+  font-size: 24px;
+}
+
+.text-28 {
+  font-size: 28px;
+}
+
+.text-32 {
+  font-size: 32px;
+}
+
+.text-40 {
+  font-size: 40px;
+}
+
+.border-bottom-primary-2 {
+  border-bottom: 2px solid $primary !important;
+}
+
+.border-top-primary-2 {
+  border-top: 2px solid $purple-700 !important;
+}
+
+.rounded-10 {
+  border-radius: 10px;
+}
+
+.shadow-none {
+  box-shadow: 0 0 #0000;
+}
+
+.transition-none {
+  transition-property: none;
+}
+
+.w-10 {
+  width: 10px;
+}
+
+.w-18 {
+  width: 18px;
+}
+
+.w-40 {
+  width: 40px;
+}
+
+.w-250 {
+  width: 250px !important;
+}
+
+.m-w-100 {
+  min-width: 100px;
+}
+
+.m-w-160 {
+  min-width: 160px;
+}
+
+.h-screen {
+  height: 100vh !important;
+}
+
+.h-10 {
+  height: 10px;
+}
+
+.h-18 {
+  height: 18px;
+}
+
+.h-40 {
+  height: 40px;
+}
+
+.flex-none {
+  flex: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-no-drop {
+  cursor: no-drop;
+}
+
+.no-underline {
+  text-decoration: none !important;
+
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gap-8 {
+  grid-gap: 8px;
+}
+
+.gap-10 {
+  grid-gap: 10px;
+}
+
+.gap-16 {
+  grid-gap: 16px;
+}
+
+.link-default {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.readonly {
+  &:read-only {
+    background-color: #fff;
+  }
+}
+
+.default-shadow {
+  box-shadow: $box-shadow;
+}
+
+@include media-breakpoint-up('lg') {
+  .h-lg-full {
+    height: 100% !important;
+  }
+
+  .flex-lg-1 {
+    flex: 1 1 0 !important;
+  }
+
+  .overflow-y-lg-auto {
+    overflow-y: auto !important;
+  }
+}
