@@ -26,25 +26,35 @@
 
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
+
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from '@nuxtjs/composition-api'
+import { computed, defineComponent, onMounted, reactive, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'LoginForm',
   layout: 'empty',
   setup() {
+    const { $auth } = useContext()
+
     const form = reactive({
-      username: '',
-      password: ''
+      username: 'wick1993',
+      password: 'WickPassword'
     })
 
-    const onSubmit = (evt: Event) => {
+    const onSubmit = async (evt: Event) => {
       evt.preventDefault()
       console.log(form)
+      try {
+        await $auth.loginWith('local', { data: form })
+      } catch (error) {
+        console.error(error)
+      }
     }
+
+
 
     const reset = () => {
       form.username = ''
@@ -52,7 +62,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      reset()
+      // reset()
     })
 
     return {
