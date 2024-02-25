@@ -46,7 +46,14 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    'dayjs-nuxt',
   ],
+  dayjs: {
+    locales: ['en'],
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultLocale: 'en',
+    defaultTimezone: 'Asia/Bangkok',
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

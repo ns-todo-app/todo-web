@@ -1,12 +1,6 @@
 import { useContext } from '@nuxtjs/composition-api'
 import { Todo } from '~/types/todo'
 
-interface TodoResponse {
-  id: string
-  title: string
-  completed: boolean
-}
-
 export const useTodoApi = () => {
   const { $axios } = useContext()
 
@@ -18,8 +12,16 @@ export const useTodoApi = () => {
     return response.data
   }
 
+  const getTodo = async (id: string) => {
+    const response = await $axios.request<Todo>({
+      url: `/todos/${id}`,
+      method: 'get'
+    })
+    return response.data
+  }
+
   const createTodo = async (data: any) => {
-    const response = await $axios.request<TodoResponse>({
+    const response = await $axios.request<Todo>({
       url: '/todos',
       method: 'post',
       data
@@ -28,7 +30,7 @@ export const useTodoApi = () => {
   }
 
   const updateTodo = async (id: string, data: any) => {
-    const response = await $axios.request<TodoResponse>({
+    const response = await $axios.request<Todo>({
       url: `/todos/${id}`,
       method: 'put',
       data
@@ -37,7 +39,7 @@ export const useTodoApi = () => {
   }
 
   const deleteTodo = async (id: string) => {
-    const response = await $axios.request<TodoResponse>({
+    const response = await $axios.request<any>({
       url: `/todos/${id}`,
       method: 'delete'
     })
@@ -46,6 +48,7 @@ export const useTodoApi = () => {
 
   return {
     getTodos,
+    getTodo,
     createTodo,
     updateTodo,
     deleteTodo

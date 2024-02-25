@@ -3,10 +3,20 @@ import { Todo } from '~/types/todo'
 import { useTodoApi } from '~/api/todo'
 
 const todos = ref<Todo[]>([])
+const todo = ref<Todo>({
+  _id: '',
+  title: '',
+  description: '',
+  createdAt: '',
+  updatedAt: '',
+  user_id: ''
+})
 const isOpenAddTodoModal = ref(false)
+const isOpenViewTodoModal = ref(false)
+const isOpenEditTodoModal = ref(false)
 
 export const useTodoState = () => {
-  const { getTodos } = useTodoApi()
+  const { getTodos, getTodo } = useTodoApi()
 
   const fetchTodos = async () => {
     try {
@@ -16,9 +26,21 @@ export const useTodoState = () => {
     }
   }
 
+  const fetchTodo = async (id: string) => {
+    try {
+      todo.value = await getTodo(id)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return {
     fetchTodos,
+    fetchTodo,
     todos,
-    isOpenAddTodoModal
+    todo,
+    isOpenAddTodoModal,
+    isOpenViewTodoModal,
+    isOpenEditTodoModal
   }
 }

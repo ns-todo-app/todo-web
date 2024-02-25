@@ -1,35 +1,42 @@
 <template>
-  <b-modal id="modal-view-todo" title="View Todo" hide-footer>
-    <b-card>
-      <b-card-body>
-        <b-card-text>{{ todo.title }}</b-card-text>
-        <b-card-footer>
-          {{ todo.description }}
-        </b-card-footer>
-      </b-card-body>
-    </b-card>
+  <b-modal
+    v-model="isOpenViewTodoModal"
+    :title="todo.title"
+    hide-header-close
+    hide-footer
+  >
+    <div class="text-gray-500">
+      {{ todo.description }}
+    </div>
+
+    <div class="mt-30 d-flex justify-content-between text-10 text-gray-600">
+      <div>
+        <div class="text-gray-500">Created At</div>
+        <div>{{ dateFormat(todo.createdAt) }}</div>
+      </div>
+      <div>
+        <div class="text-gray-500">Updated At</div>
+        <div>{{ dateFormat(todo.updatedAt) }}</div>
+      </div>
+    </div>
+
   </b-modal>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-import { Todo } from '~/types/todo'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { useTodoState } from '~/states/todo'
+import { dateFormat } from '~/utils/date'
 
 export default defineComponent({
   name: 'ModalViewTodo',
+  methods: { dateFormat },
   setup() {
-
-    const todo = ref<Todo>({
-      _id: '',
-      title: '',
-      description: '',
-      createdAt: '',
-      updatedAt: '',
-      user_id: ''
-    })
+    const { isOpenViewTodoModal, todo }  =  useTodoState()
 
     return {
-      todo
+      isOpenViewTodoModal,
+      todo,
     }
   }
 });
