@@ -26,6 +26,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios.ts',
+    '~/plugins/vee-validate.ts',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -85,5 +86,10 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['vee-validate/dist/rules'],
+    babel: {
+      compact: true
+    }
+  },
 }
