@@ -6,3 +6,10 @@ export type Todo = {
   createdAt: string,
   updatedAt: string
 }
+
+export type TodoCreate = {
+  title: string,
+  description: string,
+}
+
+export type TodoUpdate = TodoCreate

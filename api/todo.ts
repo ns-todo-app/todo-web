@@ -1,5 +1,5 @@
 import { useContext } from '@nuxtjs/composition-api'
-import { Todo } from '~/types/todo'
+import { Todo, TodoCreate, TodoUpdate } from '~/types/todo'
 
 export const useTodoApi = () => {
   const { $axios } = useContext()
@@ -20,7 +20,7 @@ export const useTodoApi = () => {
     return response.data
   }
 
-  const createTodo = async (data: any) => {
+  const createTodo = async (data: TodoCreate) => {
     const response = await $axios.request<Todo>({
       url: '/todos',
       method: 'post',
@@ -29,7 +29,7 @@ export const useTodoApi = () => {
     return response.data
   }
 
-  const updateTodo = async (id: string, data: any) => {
+  const updateTodo = async (id: string, data: TodoUpdate) => {
     const response = await $axios.request<Todo>({
       url: `/todos/${id}`,
       method: 'put',
