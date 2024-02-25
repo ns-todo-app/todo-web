@@ -5,16 +5,15 @@
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
+      <b-collapse v-if="isLoggedIn" id="nav-collapse" is-nav>
 
-        <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown right>
             <template #button-content>
-              <em>User</em>
+              <em>Hello</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item @click="goToTodos() ">Todo List</b-dropdown-item>
+            <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -23,8 +22,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useContext, useRouter } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'AppHeader',
+  setup() {
+    const router = useRouter()
+    const { $auth } = useContext()
+
+    const goToTodos = () => {
+      router.push('/todos')
+    }
+
+    const logout = () => {
+      $auth.logout()
+    }
+
+    const isLoggedIn = computed(() => $auth.loggedIn)
+
+    return {
+      goToTodos,
+      logout,
+      isLoggedIn
+    }
+  },
 })
 </script>

@@ -47,12 +47,26 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     'dayjs-nuxt',
+    '@nuxtjs/toast',
   ],
   dayjs: {
     locales: ['en'],
     plugins: ['relativeTime', 'utc', 'timezone'],
     defaultLocale: 'en',
     defaultTimezone: 'Asia/Bangkok',
+  },
+  toast: {
+    position: 'top-center',
+    duration: 3000,
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

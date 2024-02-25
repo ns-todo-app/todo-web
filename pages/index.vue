@@ -1,13 +1,8 @@
 <template>
   <div class='bg-gray-200 p-10' style='flex: 1'>
     <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-center">Todo App</h1>
-        </b-col>
-      </b-row>
 
-      <b-row class="justify-content-center">
+      <b-row class="justify-content-center mt-20">
         <b-col cols="12" md="6">
           <b-card v-if="isLoggedIn" title="Welcome" class="my-3 rounded-shadow">
             <div>
@@ -16,8 +11,11 @@
               </b-alert>
             </div>
 
-            <b-button @click="logout" variant="danger">Logout</b-button>
-            <b-button to="/todos" variant="primary">Go to Todos</b-button>
+            <div class="text-right mt-20">
+            <b-button to="/todos" variant="success">
+              Go to Todos >>
+            </b-button>
+            </div>
           </b-card>
           <b-card v-else title="Login" class="my-3 rounded-shadow">
             <Login />
@@ -35,6 +33,7 @@ import { computed, useContext } from '@nuxtjs/composition-api'
 export default Vue.extend({
   name: 'IndexPage',
   auth: false,
+  layout: 'empty',
   setup() {
     const { $auth } = useContext()
 
@@ -57,9 +56,6 @@ export default Vue.extend({
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  .bg-gray-200 {
-    background-color: #f8f9fa;
   }
   .rounded-shadow {
     border-radius: 10px; /* Adjust the border-radius value to change the roundness */

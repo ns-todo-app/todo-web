@@ -1,55 +1,82 @@
 <template>
   <div>
-    <b-form @submit="onSubmit">
-      <b-form-group
-          id="input-group-1"
-          label="Enter Username:"
-          label-for="input-1"
-      >
-        <b-form-input
-            id="input-1"
-            v-model="form.username"
-            placeholder="Enter username"
-            required
-        ></b-form-input>
-      </b-form-group>
+    <ValidationObserver v-slot='{ handleSubmit }'>
+      <b-form @submit.prevent='handleSubmit(onSubmit)'>
 
-      <b-form-group id="input-group-2" label="Enter Password:" label-for="input-2">
-        <b-form-input
-            id="input-2"
-            v-model="form.password"
-            placeholder="Enter password"
-            type="password"
-            required
-        ></b-form-input>
-      </b-form-group>
+        <ValidationProvider
+          v-slot='validationContext'
+          rules='required'
+          :custom-messages="{ required: 'Username is required' }"
+        >
+          <b-form-group
+              label="Username:"
+              :invalid-feedback="validationContext.errors[0]"
+          >
+            <b-form-input
+                v-model="form.username"
+                placeholder="Enter username"
+                :state="getValidationState(validationContext)"
+            ></b-form-input>
+          </b-form-group>
+        </ValidationProvider>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
-    </b-form>
+        <ValidationProvider
+          v-slot='validationContext'
+          rules='required'
+          :custom-messages="{ required: 'Password is required' }"
+        >
+          <b-form-group
+            label="Password:"
+            :invalid-feedback="validationContext.errors[0]"
+          >
+            <b-form-input
+                v-model="form.password"
+                placeholder="Enter password"
+                type="password"
+                :state="getValidationState(validationContext)"
+            ></b-form-input>
+          </b-form-group>
+        </ValidationProvider>
+
+        <div class="text-center">
+          <b-button type="submit" variant="success">Submit</b-button>
+        </div>
+      </b-form>
+    </ValidationObserver>
 
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, useContext } from '@nuxtjs/composition-api'
+import {  defineComponent, onMounted, reactive, useContext } from '@nuxtjs/composition-api'
+import { ValidationObserver, ValidationProvider } from 'vee-validate'
+import { getValidationState } from '~/utils/validation'
 
 export default defineComponent({
   name: 'LoginForm',
-  layout: 'empty',
+  methods: { getValidationState },
+  components: {
+    ValidationObserver,
+    ValidationProvider
+  },
   setup() {
-    const { $auth } = useContext()
+    const { $auth, $toast } = useContext()
 
     const form = reactive({
-      username: 'wick1993',
-      password: 'WickPassword'
+      username: '',
+      password: ''
     })
 
-    const onSubmit = async (evt: Event) => {
-      evt.preventDefault()
-      console.log(form)
+    const onSubmit = async () => {
       try {
         await $auth.loginWith('local', { data: form })
+        $toast.success('Successfully authenticated')
       } catch (error) {
+        if(error?.response?.status === 401)
+          $toast.error('Invalid username or password!')
+        else
+          $toast.error('Oops...Something went wrong!')
+
         console.error(error)
       }
     }
