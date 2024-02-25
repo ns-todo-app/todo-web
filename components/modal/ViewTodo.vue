@@ -20,6 +20,11 @@
       </div>
     </div>
 
+    <div class="mt-20 d-flex justify-content-between">
+      <b-button size="sm" variant="success" @click="handleClickEdit()">Edit</b-button>
+      <b-button size="sm" variant="light" @click="isOpenViewTodoModal = false">Close</b-button>
+    </div>
+
   </b-modal>
 </template>
 
@@ -32,10 +37,16 @@ export default defineComponent({
   name: 'ModalViewTodo',
   methods: { dateFormat },
   setup() {
-    const { isOpenViewTodoModal, todo }  =  useTodoState()
+    const { isOpenViewTodoModal, isOpenEditTodoModal, todo }  =  useTodoState()
+
+    const handleClickEdit = () => {
+      isOpenViewTodoModal.value = false
+      isOpenEditTodoModal.value = true
+    }
 
     return {
       isOpenViewTodoModal,
+      handleClickEdit,
       todo,
     }
   }

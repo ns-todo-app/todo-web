@@ -11,6 +11,7 @@
 
     <ModalAddTodo />
     <ModalViewTodo />
+    <ModalEditTodo />
   </div>
 </template>
 
