@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="success">
-      <b-navbar-brand href="#">TODO</b-navbar-brand>
+      <b-navbar-brand href="/">TODO</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -13,6 +13,7 @@
               <em>Hello</em>
             </template>
             <b-dropdown-item @click="goToTodos() ">Todo List</b-dropdown-item>
+            <b-dropdown-item @click="goToTablePlus">Table Plus</b-dropdown-item>
             <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -33,6 +34,10 @@ export default defineComponent({
       router.push('/todos')
     }
 
+    const goToTablePlus = () => {
+      router.push('/bonus/table-plus')
+    }
+
     const logout = () => {
       $auth.logout()
     }
@@ -41,6 +46,7 @@ export default defineComponent({
 
     return {
       goToTodos,
+      goToTablePlus,
       logout,
       isLoggedIn
     }

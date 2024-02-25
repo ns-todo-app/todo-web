@@ -71,7 +71,7 @@ export default defineComponent({
       try {
         await $auth.loginWith('local', { data: form })
         $toast.success('Successfully authenticated')
-      } catch (error) {
+      } catch (error: any) {
         if(error?.response?.status === 401)
           $toast.error('Invalid username or password!')
         else
