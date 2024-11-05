@@ -19,6 +19,11 @@
           </b-card>
           <b-card v-else title="Login" class="my-3 rounded-shadow">
             <Login />
+
+            <div>
+              Img
+              <b-img src="https://wick-uploads.s3.ap-southeast-1.amazonaws.com/2b8521bb-5a2b-4d72-9348-ed37385e968a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIASDQW7AT4PZICIQWP%2F20240312%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20240312T064726Z&X-Amz-Expires=60&X-Amz-Signature=e84f54bf535d80d340f4166cb3d177e44a5f32b9e4d45592d33cb141728212d6&X-Amz-SignedHeaders=host&x-id=GetObject" fluid alt="Responsive image" />
+            </div>
           </b-card>
         </b-col>
       </b-row>

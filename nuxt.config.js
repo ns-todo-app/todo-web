@@ -1,4 +1,7 @@
 export default {
+  server: {
+    port: 3001,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'todo-web',
